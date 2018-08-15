@@ -1,24 +1,50 @@
-<h2><%= @comic.name %></h2>
-<p><%= image_tag @comic.image.url , :size => "128x128" %></p>
-<%= link_to "レビューする",new_comic_review_path(comic_id: params[:id]) %>
-
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8 users-new-container">
+<div class="container">
+  <div class="row">
+    <div class="col-12 clearfix">
+    <h2><%= @comic.name %></h2>
+    <div class="col-md-4">
+      <p><%= image_tag @comic.image.url , :size => "350x500"  %></p>
+      <p><%= link_to "レビューする",new_comic_review_path(comic_id: params[:id]) %></p>
+      <p><div class="rating" data-score="<%= @staravg.to_s %>"></div></p>
+    </div>
+    <div class="col-md-6">
+      <p>概要</p>
+      <p><%= @comic.overview %></p>
+    </div>
+    </div>
     <h2><%= @comic.name %>が読める漫画アプリ</h2>
     <% @applications.each do |application| %>
     <div class="col-md-3">
       <p><%= image_tag application.image.url , :size => "128x128" %></p>
       <p><%= link_to application.name , application_path(application.id) %></p>
-      <%= link_to "iOSで読む", application.ioslink, class: 'btn btn-default' ,target: "_blank" %>
-      <%= link_to "Androidで読む", application.androidlink, class: 'btn btn-default' ,target: "_blank" %>
+      <p><%= link_to "iOSで読む", application.ioslink, class: 'btn btn-default' ,target: "_blank" %></p>
+      <p><%= link_to "Androidで読む", application.androidlink, class: 'btn btn-default' ,target: "_blank" %></p>
     </div>
     <% end %>
   </div>
+
+
+  <h2><%= @comic.name %>のレビュー</h2>
+  <% @reviews.each do |review| %>
+    <div class="page-header">
+      <p><div class="rating" data-score="<%= review.star.to_s %>"></div></p>
+      <p><%= review.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></p>
+      <p><%= review.context %></p>
+    </div>
+  <% end %>
 </div>
 
-<h2><%= @comic.name %>のレビュー</h2>
-<% @reviews.each do |review| %>
 
-<p><%= review.context  %></p>
-<% end %>
+<script>
+$('.rating').raty({
+  size      : 36,
+  readOnly  : true,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  number    : 5,
+  score     : function(){
+    return $(this).attr('data-score');
+  }
+});
+</script>

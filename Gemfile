@@ -67,3 +67,5 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'carrierwave'
+gem "jquery-turbolinks" # Turbolinksで遷移したときもjQuery.ready()を呼び出してくれる
+gem "kaminari"

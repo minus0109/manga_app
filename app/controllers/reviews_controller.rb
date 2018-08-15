@@ -22,6 +22,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:context).merge(comic_id: params[:comic_id])
+    params.require(:review).permit(:star, :context).merge(comic_id: params[:comic_id])
   end
 end

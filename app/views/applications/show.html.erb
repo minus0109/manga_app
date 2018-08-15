@@ -1,9 +1,10 @@
-<h1><%= @application.name %></h1>
-<%= link_to "iOSで読む", @application.ioslink, class: 'btn btn-default' ,target: "_blank" %>
-<%= link_to "Androidで読む", @application.androidlink, class: 'btn btn-default' ,target: "_blank" %>
-<h2><%= @application.name %>の作品一覧</h2>
-  <% @comics.each do |comic| %>
-  <div class="">
-    <p><%= link_to comic.name , comic_path(comic.id) %></p>
-  </div>
-<% end %>
+<div class="container">
+  <h2><%= @application.name %></h2>
+  <%= link_to "iOSで読む", @application.ioslink, class: 'btn btn-default' ,target: "_blank" %>
+  <%= link_to "Androidで読む", @application.androidlink, class: 'btn btn-default' ,target: "_blank" %>
+  <h2><%= @application.name %>の作品一覧</h2>
+    <div id="comics">
+        <%= render @comics %>
+    </div>
+    <%= paginate @comics , remote: true%>
+</div>

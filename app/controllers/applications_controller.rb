@@ -31,7 +31,9 @@ class ApplicationsController < ApplicationController
   end
   def show
     @application = Application.find(params[:id])
+
     # @comics = Comic.includes(:applications).where(application_id: params[:id])
-    @comics = Comic.joins(:applications).includes(:applications).where(applications: {id: params[:id]})
+    @comics = Comic.includes(:applications).where(applications: {id: params[:id]})
+    @comics = @comics.page(params[:page])
   end
 end

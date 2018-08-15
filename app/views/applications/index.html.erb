@@ -1,20 +1,31 @@
-<h2>マンガアプリ</2>
 <div class="container">
-  <div class="row">
-    <% @applications.each do |application| %>
-    <div class="col-md-4">
-      <p><%= image_tag application.image.url , :size => "128x128" %></p>
-      <p><%= link_to application.name , application_path(application.id) %></p>
-      <%= link_to "iOSで読む", application.ioslink, class: 'btn btn-default' ,target: "_blank" %>
-      <%= link_to "Androidで読む", application.androidlink, class: 'btn btn-default' ,target: "_blank" %>
+  <div class="container-app">
+    <p>当サイトは、漫画アプリで掲載されている漫画の一覧をまとめているウェブサイトです。現在、漫画：<%= @comics.count %>作品、マンガアプリ：<%= @applications.count %>つを掲載しています。</p>
+      <div class="row">
+        <% @applications.each do |application| %>
+          <div class="col-md-4">
+            <p><%= image_tag application.image.url , :size => "128x128" %></p>
+            <p><%= link_to application.name , application_path(application.id) %></p>
+            <%= link_to "iOSで読む", application.ioslink, class: 'btn btn-success' ,target: "_blank" %>
+            <%= link_to "Androidで読む", application.androidlink, class: 'btn btn-success' ,target: "_blank" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+  <div class="container-manga">
+    <h2>新着作品</h2>
+    <div class="row">
+      <% @comics.each do |comic| %>
+        <div class="col-md-4">
+          <p><%= image_tag comic.image.url , :size => "128x128" %></p>
+          <%= link_to comic.name , comic_path(comic.id) %></p>
+          <% comic.applications.each do |f| %>
+          <div class="tag">
+            <%= f.name %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-<h2>新着作品</h2>
-<% @comics.each do |comic| %>
-<div class="row m-t-1">
-  <div class="col-xs-10 bg-primary"><%= link_to comic.name , comic_path(comic.id) %></div>
-</div>
-
-<% end %>

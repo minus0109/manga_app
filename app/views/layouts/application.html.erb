@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <div class="container">
+      <%= link_to "マンガアプリ検索LABO", root_path %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home",   root_path %></li>
+        </ul>
+      </nav>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,9 @@
+<div class="comic clearfix page-header">
+  <div class="col-md-2">
+    <p><%= image_tag comic.image.url , :size => "120x175"  %></p>
+  </div>
+  <div class="col-md-6">
+    <p><%= link_to comic.name , comic_path(comic.id) %></p>
+    <p><%= comic.overview %></p>
+  </div>
+</div>

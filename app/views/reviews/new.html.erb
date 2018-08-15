@@ -3,10 +3,15 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 users-new-container">
         <h2 class="text-center text-white"><%= @comic.name %>のレビュー</h2>
+        <div class="field" id="test"></div>
         <%= form_for [@comic,@review] do |f| %>
+        <div class="star"></div>
           <div class="form-group">
             <%= f.label :name, class: 'text-white' %>
-            <div class="field" id="star"></div>
+            <div class="field" id="star">
+              <%= f.label :star %>
+              <%= f.hidden_field :star, id: :review_star %>
+            </div>
             <%= f.text_area :context, class: 'form-control' %>
           </div>
           <div class="">
@@ -20,9 +25,9 @@
 
 <script>
 $('#star').raty({
-  size     : 36,
-  starOff: '/assets/star-off.png',
-  starOn : '/assets/star-on.png',
-  scoreName: 'review[point]'
+  size      : 36,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  scoreName : 'review[star]'
 });
 </script>
