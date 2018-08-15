@@ -1,0 +1,24 @@
+<h2><%= @comic.name %></h2>
+<p><%= image_tag @comic.image.url , :size => "128x128" %></p>
+<%= link_to "レビューする",new_comic_review_path(comic_id: params[:id]) %>
+
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 users-new-container">
+    <h2><%= @comic.name %>が読める漫画アプリ</h2>
+    <% @applications.each do |application| %>
+    <div class="col-md-3">
+      <p><%= image_tag application.image.url , :size => "128x128" %></p>
+      <p><%= link_to application.name , application_path(application.id) %></p>
+      <%= link_to "iOSで読む", application.ioslink, class: 'btn btn-default' ,target: "_blank" %>
+      <%= link_to "Androidで読む", application.androidlink, class: 'btn btn-default' ,target: "_blank" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<h2><%= @comic.name %>のレビュー</h2>
+<% @reviews.each do |review| %>
+
+<p><%= review.context  %></p>
+<% end %>

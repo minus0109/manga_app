@@ -1,0 +1,28 @@
+<div class="comments-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h2 class="text-center text-white"><%= @comic.name %>のレビュー</h2>
+        <%= form_for [@comic,@review] do |f| %>
+          <div class="form-group">
+            <%= f.label :name, class: 'text-white' %>
+            <div class="field" id="star"></div>
+            <%= f.text_area :context, class: 'form-control' %>
+          </div>
+          <div class="">
+          <%= f.submit "コメントする", class: 'btn-block btn-black' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff: '/assets/star-off.png',
+  starOn : '/assets/star-on.png',
+  scoreName: 'review[point]'
+});
+</script>

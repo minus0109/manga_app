@@ -1,0 +1,4 @@
+<h2>マンガアプリで読める漫画一覧</h2>
+<% @comics.each do |comic| %>
+<p><%= link_to comic.name , comic_path(comic.id) %></p>
+<% end %>
