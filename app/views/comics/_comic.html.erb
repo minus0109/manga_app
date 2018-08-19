@@ -1,3 +1,4 @@
+<div class="comic">
 <div class="comic clearfix page-header">
   <div class="col-md-2">
     <p><%= image_tag comic.image.url , :size => "120x175"  %></p>
@@ -7,6 +8,7 @@
     <p>評価：<div class="rating" data-score="<%= comic.reviews.average(:star) %></p>"></div></p>
     <p><%= comic.overview %></p>
   </div>
+</div>
 </div>
 
 <script>

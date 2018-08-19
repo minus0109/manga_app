@@ -8,7 +8,5 @@
         <%= render @comics %>
       </div>
     </div>
-    <br>
-
-    <%= paginate @comics %>
+    <%= paginate @comics , remote: true%>
 </div>

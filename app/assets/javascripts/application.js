@@ -17,5 +17,5 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require infinite-scroll.pkgd.min
 //= require_tree .
+//= require jquery.infinitescroll
