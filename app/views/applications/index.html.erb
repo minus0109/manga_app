@@ -1,5 +1,4 @@
 <div class="container">
-  <div class="container-app">
     <p>当サイトは、漫画アプリで掲載されている漫画の一覧をまとめているウェブサイトです。現在、漫画：<%= @comics.count %>作品、マンガアプリ：<%= @applications.count %>つを掲載しています。</p>
       <div class="row">
         <% @applications.each do |application| %>
@@ -11,21 +10,15 @@
           </div>
         <% end %>
       </div>
-    </div>
-  <div class="container-manga">
     <h2>新着作品</h2>
-    <div class="row">
-      <% @comics.each do |comic| %>
-        <div class="col-md-4">
+    <% @comics.each do |comic| %>
+
+        <div class="col-md-3">
           <p><%= image_tag comic.image.url , :size => "128x128" %></p>
-          <%= link_to comic.name , comic_path(comic.id) %></p>
+          <p><%= link_to comic.name , comic_path(comic.id) %></p>
           <% comic.applications.each do |f| %>
-          <div class="tag">
             <%= f.name %>
-          </div>
           <% end %>
         </div>
-      <% end %>
-    </div>
-  </div>
+    <% end %>
 </div>

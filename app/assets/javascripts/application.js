@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require infinite-scroll.pkgd.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require infinite-scroll.pkgd.min
 //= require_tree .

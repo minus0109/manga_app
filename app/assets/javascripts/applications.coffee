@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $("#comics").infinitescroll({
-    path: '.pagination__next',
-    append: '.comic',
-    history: false,
-    });
+  $("#comics .page").infinitescroll
+        navSelector: "nav.pagination" # selector for the paged navigation (it will be hidden)
+        nextSelector: "nav.pagination a[rel=next]" # selector for the NEXT link (to page 2)
+        itemSelector: "#comics div.comic" # selector for all items you'll retrieve

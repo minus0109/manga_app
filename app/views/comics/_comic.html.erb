@@ -4,6 +4,21 @@
   </div>
   <div class="col-md-6">
     <p><%= link_to comic.name , comic_path(comic.id) %></p>
+    <p>評価：<div class="rating" data-score="<%= comic.reviews.average(:star) %></p>"></div></p>
     <p><%= comic.overview %></p>
   </div>
 </div>
+
+<script>
+$('.rating').raty({
+  size      : 36,
+  readOnly  : true,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  number    : 5,
+  score     : function(){
+    return $(this).attr('data-score');
+  }
+});
+</script>
